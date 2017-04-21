@@ -31,7 +31,7 @@ repositories {
      mavenCentral()
 }
 dependencies {
-	compile project(':JPAEventTracker)
+	compile project(':JPAEventTracker')
 
     compile group: 'org.springframework', name: 'spring-webmvc', version:"$springVersion"
     compile group: 'org.springframework', name: 'spring-orm', version:"$springVersion"
