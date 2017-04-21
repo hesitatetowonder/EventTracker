@@ -6,4 +6,4 @@ build
 .metadata
 bin
 .recommenders/
-servers/
+Servers/
