@@ -1,4 +1,4 @@
-package entitites;
+package entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +17,16 @@ public class Sleep {
 	private double sleepTime, wakeTime;
 	
 	private int quality;
+	
+	private String dayOfWeek;
+
+	public String getDayOfWeek() {
+		return dayOfWeek;
+	}
+
+	public void setDayOfWeek(String dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
+	}
 
 	public int getId() {
 		return id;
@@ -52,8 +62,10 @@ public class Sleep {
 
 	@Override
 	public String toString() {
-		return "Sleep id=" + id + ", sleepTime=" + sleepTime + ", wakeTime=" + wakeTime + ", quality=" + quality;
+		return "Sleep ID = " + id + ", sleepTime=" + sleepTime + ", wakeTime=" + wakeTime + ", quality=" + quality
+				+ ", dayOfWeek=" + dayOfWeek;
 	}
+
 	
 
 }
