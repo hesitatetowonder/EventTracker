@@ -1,0 +1,28 @@
+#Quizzes
+{
+	margin-left: auto;
+    margin-right: auto;
+	font-size:	40px;
+    width: 1000 px;
+    text-align: center;
+}
+
+#Quiz
+{
+	margin-left: auto;
+    margin-right: auto;
+	font-size:	40px;
+    width: 1500 px;
+    text-align: center;
+}
+#list
+{
+	font-size:50%;
+	color : blue;
+}
+
+#answer
+{
+	font-size:50%;
+	color : red;
+}

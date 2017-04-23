@@ -44,11 +44,11 @@ public class EventTrackerContoller {
 
 
 	@RequestMapping(path = "sleep", method = RequestMethod.POST)
-	public Sleep create(@RequestBody String jsonSleeps, HttpServletResponse res) {
+	public Sleep create(@RequestBody String sleepJSON, HttpServletResponse res) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			Sleep mappedSleep = mapper.readValue(jsonSleeps, Sleep.class);
-			res.setStatus(201);
+			Sleep mappedSleep = mapper.readValue(sleepJSON, Sleep.class);
+			res.setStatus(418);
 			return eventDAO.create(mappedSleep);
 			
 		} catch (Exception e) {
@@ -57,20 +57,19 @@ public class EventTrackerContoller {
 		}
 	}
 
+	@RequestMapping(path = "sleep/{id}", method = RequestMethod.PUT)
+	public Sleep update(@PathVariable int id, @RequestBody String jsonSleep, HttpServletResponse res) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			Sleep mappedSleep = mapper.readValue(jsonSleep, Sleep.class);
+			res.setStatus(202);
+			return eventDAO.update(id, mappedSleep);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
-//	@RequestMapping(path = "sleep/{id}", method = RequestMethod.PUT)
-//	public Sleep update(@PathVariable int id, @RequestBody String quizJSON, HttpServletResponse res) {
-//		ObjectMapper mapper = new ObjectMapper();
-//		try {
-//			Sleep mappedSleep = mapper.readValue(quizJSON, Quiz.class);
-//			res.setStatus(202);
-//			return eventDAO.update(id, mappedSleep);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//	}
-//
 //	@RequestMapping(path = "sleep/{id}", method = RequestMethod.DELETE)
 //	public boolean destroy(@PathVariable int id) {
 //		try {

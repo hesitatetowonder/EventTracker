@@ -31,6 +31,18 @@ public class EventTrackerDAOImpl implements EventTrackerDAO {
 		return sleep;
 	}
 	
+	@Override
+	public Sleep update(int id, Sleep sleep) {
+		Sleep managed = em.find(Sleep.class, id);
+		
+		em.persist(managed);
+		em.flush();
+		
+		return managed;
+	}
+
+
+	
 }
 
 

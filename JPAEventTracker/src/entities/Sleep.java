@@ -14,7 +14,9 @@ public class Sleep {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private double sleepTime, wakeTime;
+	private double sleepTime;
+	
+	private double wakeTime;
 	
 	private int quality;
 	
