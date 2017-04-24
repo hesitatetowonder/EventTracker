@@ -14,43 +14,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+import data.EventTrackerDAO;
 import data.EventTrackerDAOImpl;
 import entities.Sleep;
 
 @RestController
-public class EventTrackerContoller {
-	
+public class EventTrackerController {
 
 	@Autowired
-	EventTrackerDAOImpl eventDAO;
+	private EventTrackerDAO eventDAO;
 
 	@RequestMapping(path = "ping", method = RequestMethod.GET)
 	public String ping() {
 		return "pong";
 	}
 
-
 	@RequestMapping(path = "sleep", method = RequestMethod.GET)
 	public List<Sleep> index() {
 		return eventDAO.index();
 	}
-
 
 	@RequestMapping(path = "sleep/{id}", method = RequestMethod.GET)
 	public Sleep show(@PathVariable int id) {
 		return eventDAO.show(id);
 	}
 
-
 	@RequestMapping(path = "sleep", method = RequestMethod.POST)
 	public Sleep create(@RequestBody String sleepJSON, HttpServletResponse res) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			Sleep mappedSleep = mapper.readValue(sleepJSON, Sleep.class);
-			res.setStatus(418);
+			res.setStatus(201);
 			return eventDAO.create(mappedSleep);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -70,20 +66,14 @@ public class EventTrackerContoller {
 		}
 	}
 
-//	@RequestMapping(path = "sleep/{id}", method = RequestMethod.DELETE)
-//	public boolean destroy(@PathVariable int id) {
-//		try {
-//			eventDAO.destroy(id);
-//			return true;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return false;
-//		}
-//	}
-
+	@RequestMapping(path = "sleep/{id}", method = RequestMethod.DELETE)
+	public boolean destroy(@PathVariable int id) {
+		try {
+			eventDAO.destroy(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }
-
-
-
-
-
