@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	clear('forms');
+	clear('Day');
+	clear('Sleep')
 	getSleep();
 });
 
@@ -87,8 +90,7 @@ function sleepTable(data) {
 			    var wakeTime=$('<label for="Wake time">Wake time</label><input type="number" name="wakeTime" id="wake" min="1" max="24"/>');
 			    var quality=$('<label for="Qualtiy">Quality</label><input type="number" name="quality" id="quality" min="1" max="10"/>');
 			    var submit = $('<input type="submit" placholder="GO"/>');
-
-
+			  
 			    $('#content').append(form);
 			    form.append(dayOfWeek);
 			    form.append(sleepTime);
@@ -118,7 +120,7 @@ function sleepTable(data) {
 			        });
 
 			        myReq.done(function(data, status) {
-			            clear('form');
+			            clear('forms');
 			            getSleep();
 			        });
 			        myReq.fail(function(xhr, status, error) {
@@ -191,7 +193,7 @@ function createSleep(){
 	        });
 
 	        myReq.done(function(data, status) {
-	            clear('form');
+	            clear('forms');
 	            getSleep();
 	        });
 	        myReq.fail(function(xhr, status, error) {

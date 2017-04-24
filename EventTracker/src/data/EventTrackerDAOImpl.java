@@ -38,10 +38,18 @@ public class EventTrackerDAOImpl implements EventTrackerDAO {
 	@Override
 	public Sleep update(int id, Sleep sleep) {
 		Sleep managed = em.find(Sleep.class, id);
+		if (sleep.getDayOfWeek() != null){
 		managed.setDayOfWeek(sleep.getDayOfWeek());
+		}
+		if (sleep.getSleepTime()!=0) {
 		managed.setSleepTime(sleep.getSleepTime());
+		}
+		if (sleep.getWakeTime()!=0) {
 		managed.setWakeTime(sleep.getWakeTime());
+		}
+		if (sleep.getQuality()!=0) {
 		managed.setQuality(sleep.getQuality());
+		}
 		em.persist(managed);
 		em.flush();
 		
