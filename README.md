@@ -12,3 +12,5 @@ Created sleeptracker database to track a users sleep.
 User enters the time they went to bed, time they wake up and the quality of their sleep.
 The tracker will log the info and compute the hours they slept.
 The user can add, edit or delete the list of days.
+
+project online at http://52.42.34.134:8080/EventTracker/
